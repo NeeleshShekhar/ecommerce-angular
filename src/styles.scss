@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+// @import '~ngx-toastr/toastr';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+:root{
+    --bodyBack: #ffeaed;
+    --textColor: #1b2741;
+    --starColor: #f67034;
+    --sectionBack: #f7f6f9;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+.search{
+        padding: 10px 5px;
+  
+}
+
+
+   
+
+
