@@ -25,6 +25,7 @@ import { OfferComponent } from './offer/offer.component';
 import { AddUpdateOfferComponent } from './add-update-offer/add-update-offer.component';
 import { ProductsComponent } from './products/products.component';
 import { AddUpdateProductsComponent } from './add-update-products/add-update-products.component';
+import { ToastrModule } from 'ngx-toastr';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -44,11 +45,11 @@ import { AddUpdateProductsComponent } from './add-update-products/add-update-pro
     RouterModule.forChild(
       [
         {path:'categories',component:CategoriesComponent},
-        {path:'add-categories',component:CategoriesComponent},
-        {path:'update-categories/:id',component:CategoriesComponent},
+     
         {path:'offers',component:OfferComponent},
-        {path:'add-offer',component:AddUpdateOfferComponent},
-        {path:'update-offer/:id',component:AddUpdateOfferComponent}
+       
+        {path:'products',component:ProductsComponent},
+     
 
       ],
       
@@ -69,7 +70,9 @@ import { AddUpdateProductsComponent } from './add-update-products/add-update-pro
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    FilterPipeModule
+    FilterPipeModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   exports:[CategoriesComponent]
 })
