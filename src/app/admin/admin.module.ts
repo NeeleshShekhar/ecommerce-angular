@@ -26,6 +26,7 @@ import { AddUpdateOfferComponent } from './add-update-offer/add-update-offer.com
 import { ProductsComponent } from './products/products.component';
 import { AddUpdateProductsComponent } from './add-update-products/add-update-products.component';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './login/login.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -38,12 +39,16 @@ import { ToastrModule } from 'ngx-toastr';
     OfferComponent,
     AddUpdateOfferComponent,
     ProductsComponent,
-    AddUpdateProductsComponent
+    AddUpdateProductsComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(
       [
+        {
+          path:'',component:LoginComponent
+        },
         {path:'categories',component:CategoriesComponent},
      
         {path:'offers',component:OfferComponent},

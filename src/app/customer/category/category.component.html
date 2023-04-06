@@ -1,0 +1,84 @@
+<!-- 
+<div class="categories">
+    <div class="col">
+        <div class="row">
+            <img src="https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt="" />
+            <button>
+                <p class="link">
+                    Sale
+                </p>
+            </button>
+        </div>
+        <div class="row">
+            <img src="https://images.pexels.com/photos/2036646/pexels-photo-2036646.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt="" />
+            <button>
+                <p class="link">
+                    Women
+                </p>
+            </button>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row">
+
+            <img src="https://images.pexels.com/photos/1813947/pexels-photo-1813947.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt="" />
+            <button>
+                <p class="link">
+                    New Season
+                </p>
+            </button>
+        </div>
+    </div>
+    <div class="col col-l">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <img src="https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                        alt="" />
+                    <button>
+                        <p class="link">
+                            Men
+                        </p>
+                    </button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+
+                    <img src="https://images.pexels.com/photos/2703202/pexels-photo-2703202.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                        alt="" />
+                    <button>
+                        <p class="link">
+                            Accessories
+                        </p>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <img src="https://images.pexels.com/photos/1159670/pexels-photo-1159670.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt="" />
+            <button>
+                <p class="link">
+                    Shoes
+                </p>
+            </button>
+        </div>
+    </div>
+</div> -->
+
+<h1 class="heading text-center fw-bolder">Categories</h1>
+<div class="container">
+  
+    <div class="box" *ngFor="let item of data">
+        <div class="imgBox">
+            <img [src]="item?.imageURL" alt="">
+            <p class="text-center fw-bolder">{{item?.name}}</p>
+        </div>
+       
+    </div>
+</div>
+

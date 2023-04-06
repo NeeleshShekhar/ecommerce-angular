@@ -1,6 +1,7 @@
 import { animate, animation, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navData } from './navData.data';
+import { navDataCust } from './navDataCust.data';
 interface SideNavToggle{
   screenWidth:number;
   collapsed:boolean
@@ -27,7 +28,7 @@ interface SideNavToggle{
 })
 export class SidenavComponent implements OnInit {
 collapsed=false;
-navData=navData
+navData:any[]=[]
 @HostListener('window:resize',['$event'])
 onResize(event:any){
   this.screenWidth=window.innerHeight
@@ -41,8 +42,14 @@ onResize(event:any){
 }
 @Output() onToggleSideNav:EventEmitter<SideNavToggle>=new EventEmitter();
 screenWidth=0
-
-  constructor() { }
+// showAdminSideNav:boolean=false
+  constructor() {
+  if(localStorage.getItem('isAdmin')==null||localStorage.getItem('isAdmin')==undefined){
+    this.navData=navDataCust
+  }
+  else
+  this.navData=navData
+   }
 
   ngOnInit(): void {
     this.screenWidth=window.innerWidth
