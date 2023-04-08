@@ -1,0 +1,32 @@
+.outer {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.hello {
+    background-color: #f0f0f0;
+    // border: 1px solid grey;
+    width: 80%;
+    margin: auto;
+
+    .left {
+        width: 30%;
+
+        img {
+            border-radius: 50%;
+        }
+
+    }
+
+    .right {
+        width: 50%;
+
+        .mn {
+            margin-top: -10px;
+        }
+    }
+    mat-list-item{
+        border-bottom: 1px solid grey;
+    }
+    
+}

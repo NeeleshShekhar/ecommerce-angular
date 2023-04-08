@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="profile">
+        <app-profile></app-profile>
+    </div>
+    <div class="wishlist">
+        <div class="product my-2 d-flex p-3" *ngFor="let item of data">
+            <div class="image">
+                <img [src]="item?.imageURL" alt="" width="300px" height="200px">
+            </div>
+            <div class="features">
+                <h1>{{item?.name}}</h1>
+                <p><span class="badge badge-pill badge-primary">4 star</span></p>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+
+                </ul>
+            </div>
+            <div class="pricing">
+                <h1 class="fw-bolder m-4">RS {{item?.price -item?.discountPercent/100*item?.price}}</h1>
+                <p class="off"><del>{{item?.price}}</del><span class="text-success">{{item?.discountPercent}}%
+                        off</span></p>
+                <p class="text-secondary off">Free Delivery</p>
+            </div>
+        </div>
+    </div>
+</div>

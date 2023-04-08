@@ -1,3 +1,8 @@
-<div class="body" [ngClass]="getBodyClass()">
+<div class="body" [ngClass]="getBodyClass()" *ngIf="showAdminSideNav">
+    
+    <router-outlet></router-outlet>
+
+</div>
+<div *ngIf="!showAdminSideNav">
     <router-outlet></router-outlet>
 </div>

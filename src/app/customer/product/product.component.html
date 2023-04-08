@@ -1,13 +1,18 @@
 <h1 class="heading text-center fw-bolder">Products</h1>
-<div class="container">
-    <div class="card m-2" style="width: 18rem;" *ngFor="let item of data">
-        <img class="card-img-top" [src]="item?.imageURL" alt="Card image cap">
-        <div class="card-body">
-            <h2 class="fw-bolder">{{item?.name}}</h2>
-            <p> <del>Rs: {{item?.price}}</del> {{item?.price -item?.discountPercent/100*item?.price}}
-                </p>
-      </div>
-      <div class="btns m-auto">
-        <button type="button" class="btn btn-outline-primary mb-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-      </div>
+<div class="containers">
+  <div class="card m-2 shadow" style="width: 12rem;" *ngFor="let item of data,index as i">
+    <img class="card-img-top" [src]="item?.imageURL" alt="Card image cap">
+    <div class="card-body">
+      <h2 class="fw-bolder">{{item?.name}}</h2>
+      <p> <del>Rs: {{item?.price}}</del> {{item?.price -item?.discountPercent/100*item?.price}}
+      </p>
+    </div>
+    <div class="btns m-auto">
+      <button type="button" class="btn btn-outline-primary mb-2" (click)="addToCart(i)"><i class="fa fa-shopping-cart" aria-hidden="true"
+          ></i>
+        Add to cart</button>
+    </div>
+
+  </div>
+
 </div>

@@ -28,7 +28,7 @@ interface SideNavToggle{
 })
 export class SidenavComponent implements OnInit {
 collapsed=false;
-navData:any[]=[]
+navData=navData
 @HostListener('window:resize',['$event'])
 onResize(event:any){
   this.screenWidth=window.innerHeight
@@ -42,13 +42,13 @@ onResize(event:any){
 }
 @Output() onToggleSideNav:EventEmitter<SideNavToggle>=new EventEmitter();
 screenWidth=0
-// showAdminSideNav:boolean=false
+showAdminSideNav:boolean=false
   constructor() {
-  if(localStorage.getItem('isAdmin')==null||localStorage.getItem('isAdmin')==undefined){
-    this.navData=navDataCust
+    console.log(localStorage.getItem('isAdmin') =='true')
+  if(localStorage.getItem('isAdmin') =='true'){
+    this.showAdminSideNav=true
   }
-  else
-  this.navData=navData
+ 
    }
 
   ngOnInit(): void {

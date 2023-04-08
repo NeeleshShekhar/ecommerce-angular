@@ -27,6 +27,8 @@ import { ProductsComponent } from './products/products.component';
 import { AddUpdateProductsComponent } from './add-update-products/add-update-products.component';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
+import { BannerComponent } from './banner/banner.component';
+import { AddUpdateBannerComponent } from './add-update-banner/add-update-banner.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -40,7 +42,9 @@ import { LoginComponent } from './login/login.component';
     AddUpdateOfferComponent,
     ProductsComponent,
     AddUpdateProductsComponent,
-    LoginComponent
+    LoginComponent,
+    BannerComponent,
+    AddUpdateBannerComponent
   ],
   imports: [
     CommonModule,

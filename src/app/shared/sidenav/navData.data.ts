@@ -20,5 +20,11 @@ export const navData=[
         label:'Product'
 
 
+    },
+    {
+        routerLink:'admin/banner',
+        icon:'fal fa-home',
+        label:'Banner'
     }
+
 ]

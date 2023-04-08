@@ -49,4 +49,20 @@ url:string='https://localhost:7126/api/'
   deleteOffer(id:any){
     return this.http.delete(`${this.url}Offers/${id}`)
   }
+  loginAdmin(data:any){
+    return this.http.get(`${this.url}users/valiadate?email=${data.email}&password=${data.password}`)
+  }
+  getProductsByCatId(id:any){
+    return this.http.get(`${this.url}Products/getProdductByCategory/${id}`)
+  }
+
+  addToCart(data:any){
+   return this.http.post(`${this.url}Carts`,data)
+  }
+  updateCart(data:any,id:any){
+    return this.http.put(`${this.url}Carts/${id}`,data)
+  }
+  getCartByUserId(id:any){
+    return this.http.get(`${this.url}Carts/getCartByUserId/${id}`)
+  }
 }

@@ -1,4 +1,4 @@
-<div class="sidenav" [ngClass]="collapsed?'sidenav-collapsed':''">
+<div class="sidenav" [ngClass]="collapsed?'sidenav-collapsed':''" *ngIf="showAdminSideNav">
     <div class="logo-container">
         <button class="logo" (click)="toggleSidenav()">S</button>
         <div class="logo-text" *ngIf="collapsed">ShipKart</div>

@@ -15,7 +15,7 @@ export class BannerComponent {
     dots: false,
     autoplay:true,
     navSpeed: 700,
-    navText: ['<', '>'],
+    navText: ['', ''],
     responsive: {
       0: {
         items: 1

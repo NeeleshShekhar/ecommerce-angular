@@ -1,0 +1,65 @@
+<div class="container-fluid d-flex bg">
+    <div class="filter">
+        <h1 class="text-center p-3">Filter</h1>
+        <div class="card-cat p-2">
+            <div class="container bd">
+                <h4>Price</h4>
+                <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+            </div>
+            <div class="container bd">
+                <h4>Sort By</h4>
+                <mat-radio-group>
+                    <mat-radio-button value="1">Price(Low to High)</mat-radio-button>
+                    <br>
+                    <mat-radio-button value="2">Price(High to Low)</mat-radio-button>
+                  </mat-radio-group>
+            </div>
+            <div class="container bd">
+                <h4>Ratings</h4>
+                <mat-radio-group>
+                    <mat-radio-button value="1">3 star</mat-radio-button>
+                    <br>
+                    <mat-radio-button value="1">4 star</mat-radio-button>
+                    <br>
+                    <mat-radio-button value="1">5 star</mat-radio-button>
+
+                  </mat-radio-group>
+            </div>
+           
+
+        </div>
+    </div>
+    <div class="products">
+        <div class="product my-2 d-flex p-3" *ngFor="let item of data| paginate: { itemsPerPage: 2, currentPage: p }">
+            <div class="image">
+                <img [src]="item?.imageURL" alt="" width="300px" height="200px">
+            </div>
+            <div class="features">
+                <h1>{{item?.name}}</h1>
+                <p><span class="badge badge-pill badge-primary">4 star</span></p>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+
+                    <li>Lorem ipsum dolor sit amet consectetur </li>
+
+                </ul>
+            </div>
+            <div class="pricing">
+                <h1 class="fw-bolder m-4">RS {{item?.price -item?.discountPercent/100*item?.price}}</h1>
+                <p class="off"><del>{{item?.price}}</del><span class="text-success">{{item?.discountPercent}}%
+                        off</span></p>
+                <p class="text-secondary off">Free Delivery</p>
+            </div>
+        </div>
+        <pagination-controls (pageChange)="p = $event" style="text-align: center;"></pagination-controls>
+
+    </div>
+
+
+
+
+
+</div>

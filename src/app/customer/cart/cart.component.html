@@ -1,0 +1,53 @@
+<div class="container-fluid body">
+    <div class="container d-flex">
+        <div class="card-item m-2">
+            <!-- <div class="address p-2" style="margin-bottom: 15px;">
+               <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque reprehenderit aut voluptate fuga illum.</p>
+            </div> -->
+            <div class="product my-2 p-3 d-flex" *ngFor="let item of data">
+                <div class="image">
+                    <img src="../../../assets/th.jpg" alt="" width="150" height="150px">
+                    <p class="quantity"><span (click)="subOn(item)"><i class="fa fa-minus-circle fa-lg" aria-hidden="true"></i> </span> {{item?.quantity}} <span (click)="addOn(item)"> <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i></span></p>
+                </div>
+                <div class="details">
+                    <h2 class="fw-bold">{{item?.productName}}</h2>
+                    <p class="cost"><del>{{item?.price}}</del> Rs {{item?.price -item?.discount/100*item?.price}} <span>{{item?.discount}}% off</span></p>
+                </div>
+                <div class="extra">
+                    <p>Delivery in 2 days | Free</p>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="price m-2" style="height: 300px;">
+            <p class="fs-5 px-2 py-3 bb">Price Details</p>
+            <div class="d-flex bb py-4 px-2">
+                <div class="w-80">
+                    <p>Price</p>
+                    <p>Discount</p>
+                    <p>Delivery Charges</p>
+                </div>
+                <div class="w-20">
+                    <p>Rs2333</p>
+                    <p>-Rs233</p>
+                    <p>Free</p>
+                </div>
+            </div>
+            <div class="bb d-flex py-3 px-2">
+                <div class="w-80">
+                    <p class="fs-6">Total Amount</p>
+                    
+                </div>
+                <div class="w-20">
+                    <p class="fs6">Rs2333</p>
+                  
+                </div>
+            </div>
+            <div class="px-2">
+                <p>You will save Rs3464 on this order</p>
+            </div>
+           
+        </div>
+    </div>
+</div>
