@@ -8,7 +8,7 @@
      </button>
     </div>
   </mat-toolbar>
-  <mat-toolbar class="d-flex" *ngIf="!showAdminSideNav"> 
+  <!-- <mat-toolbar class="d-flex" *ngIf="!showAdminSideNav"> 
     <div class="w-80">
 
     </div>
@@ -17,12 +17,15 @@
         Sign In/Sign Up
      </button>
     </div>
-  </mat-toolbar>
+  </mat-toolbar> -->
+<div *ngIf="!showAdminSideNav" > 
+  <app-header></app-header>
+ </div>
  
 <app-sidenav (onToggleSideNav)="onToggleSideNav($event)" ></app-sidenav>
 <app-body [collapsed]="isSideNavClosed" 
 [screenWidth]="screenWidth"></app-body>
-<div *ngIf="!showAdminSideNav">
+<!-- <div *ngIf="!showAdminSideNav">
     <app-footer></app-footer>
-</div>
+</div> -->
 

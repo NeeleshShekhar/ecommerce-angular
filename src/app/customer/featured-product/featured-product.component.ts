@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin/admin.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-featured-product',
+  templateUrl: './featured-product.component.html',
+  styleUrls: ['./featured-product.component.scss']
 })
-export class ProductComponent {
+export class FeaturedProductComponent {
   data: any[] = []
   id:any
   constructor(private _service: AdminService,

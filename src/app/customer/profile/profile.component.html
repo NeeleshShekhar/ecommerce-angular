@@ -5,7 +5,7 @@
         </div>
         <div class="right">
             <p>Hello,</p>
-            <p class="mn">Ayan Nandy</p>
+            <p class="mn"><span>{{user.firstName}} </span><span>{{user.lastName}}</span></p>
         </div>
     </div>
   
@@ -13,9 +13,10 @@
 <div class="outer">
     <div class="hello my-2 p-2">
         <mat-list>
-            <mat-list-item> Pepper </mat-list-item>
-            <mat-list-item> Salt </mat-list-item>
-            <mat-list-item> Paprika </mat-list-item>
+            <mat-list-item (click)="profile()"> Profile </mat-list-item>
+            <mat-list-item (click)="address()">Address </mat-list-item>
+            <mat-list-item> Dummy</mat-list-item>
+            <mat-list-item (click)="logout()"> Log Out </mat-list-item>
            </mat-list>
     </div>
   

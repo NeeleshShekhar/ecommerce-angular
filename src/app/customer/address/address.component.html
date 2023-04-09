@@ -1,0 +1,29 @@
+<div class="container-fluid d-flex bd">
+    <div class="profile bd">
+        <app-profile></app-profile>
+    </div>
+    <div class="wishlist mx-2">
+        <div class="d-flex flex-row-reverse"> <button type="button" class="btn btn-outline-primary" (click)="add()">+ Add</button></div>
+
+        <div class="card my-2" *ngFor="let item of data">
+            <div class="card-body d-flex">
+                <div style="width: 70%;">
+                    <p>Home</p>
+                    <p><span>{{item?.landmark}} ,</span> <span>{{item?.city}} ,</span><span>{{item?.state}}</span></p>
+                        <p>{{item?.pinCode}}</p>
+                    <p>Contact No: {{user?.phone}} </p>
+                </div>
+                <div style="width: 30%;">
+                    <button mat-icon-button color="primary" (click)="openEditForm(item)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button color="warn" >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer-new></app-footer-new>

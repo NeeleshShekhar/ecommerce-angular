@@ -65,4 +65,21 @@ url:string='https://localhost:7126/api/'
   getCartByUserId(id:any){
     return this.http.get(`${this.url}Carts/getCartByUserId/${id}`)
   }
+
+  getProductByPriceHtoL(id:any){
+    return this.http.get(`${this.url}Products/sortDesc?id=${id}`)
+  }
+  getProductByPriceLtoH(id:any){
+    return this.http.get(`${this.url}Products/sortAsc?id=${id}`)
+  }
+
+  addAddress(data:any){
+    return this.http.post(`${this.url}Addresses`,data)
+  }
+  updateAddress(data:any,id:any){
+    return this.http.put(`${this.url}Addresses/${id}`,data)
+  }
+  getAddressByuserId(id:any){
+    return this.http.get(`${this.url}Addresses/getByUserId/${id}`)
+  }
 }

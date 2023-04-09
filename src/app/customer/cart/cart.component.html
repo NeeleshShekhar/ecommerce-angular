@@ -1,20 +1,25 @@
 <div class="container-fluid body">
     <div class="container d-flex">
         <div class="card-item m-2">
-            <!-- <div class="address p-2" style="margin-bottom: 15px;">
-               <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque reprehenderit aut voluptate fuga illum.</p>
-            </div> -->
+            <div class="address p-2 my-2" style="margin-bottom: 15px;">
+               <div class="w-80">
+<p><span>{{address?.landmark}} ,</span> <span>{{address?.city}} ...</span></p>
+               </div>
+               <div class="w-20">
+
+               </div>
+            </div>
             <div class="product my-2 p-3 d-flex" *ngFor="let item of data">
                 <div class="image">
                     <img src="../../../assets/th.jpg" alt="" width="150" height="150px">
                     <p class="quantity"><span (click)="subOn(item)"><i class="fa fa-minus-circle fa-lg" aria-hidden="true"></i> </span> {{item?.quantity}} <span (click)="addOn(item)"> <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i></span></p>
                 </div>
                 <div class="details">
-                    <h2 class="fw-bold">{{item?.productName}}</h2>
-                    <p class="cost"><del>{{item?.price}}</del> Rs {{item?.price -item?.discount/100*item?.price}} <span>{{item?.discount}}% off</span></p>
+                    <h2 class="fw-bold fs-5">{{item?.productName}}</h2>
+                    <p class="cost"><del>₹ {{item?.price}}</del> <br> ₹ {{item?.price -item?.discount/100*item?.price}} <span class="fw-bolder text-success">{{item?.discount}}% off</span></p>
                 </div>
                 <div class="extra">
-                    <p>Delivery in 2 days | Free</p>
+                    <p class="fw-800">Delivery in 2 days | <span class="text-success">Free</span> </p>
                 </div>
                 
             </div>
@@ -29,25 +34,26 @@
                     <p>Delivery Charges</p>
                 </div>
                 <div class="w-20">
-                    <p>Rs2333</p>
-                    <p>-Rs233</p>
-                    <p>Free</p>
+                    <p class="fw-bolder">₹ {{price}}</p>
+                    <p class="fw-bold text-success">- ₹ {{discountPrice}}</p>
+                    <p class="fw-bold text-success">Free</p>
                 </div>
             </div>
-            <div class="bb d-flex py-3 px-2">
+            <div class="bb d-flex py-2 px-2">
                 <div class="w-80">
-                    <p class="fs-6">Total Amount</p>
+                    <p class="fs-6 fw-800">Total Amount</p>
                     
                 </div>
                 <div class="w-20">
-                    <p class="fs6">Rs2333</p>
+                    <p class="fs6 fw-bolder">₹ {{totalPrice}}</p>
                   
                 </div>
             </div>
-            <div class="px-2">
-                <p>You will save Rs3464 on this order</p>
+            <div class="px-2 py-2">
+                <p class="text-success">You will save ₹ {{discountPrice}} on this order</p>
             </div>
            
         </div>
     </div>
 </div>
+<app-footer></app-footer>

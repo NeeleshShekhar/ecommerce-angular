@@ -14,10 +14,36 @@ constructor(private _service:AdminService){
 user:any
 ngOnInit(){
   this.user = JSON.parse(localStorage.getItem('userObj')!)
-  this._service.getCartByUserId(3).subscribe((res:any)=>{
+  this._service.getCartByUserId(this.user?.id).subscribe((res:any)=>{
     console.log(res)
     this.data=res
+    this.getCartValue()
   })
+  this.getAddress()
+}
+address:any
+totalPrice:number=0
+discountPrice:number=0
+price:number=0
+
+getAddress(){
+  this._service.getAddressByuserId(this.user?.id).subscribe((res:any)=>{
+ console.log(res)
+ this.address=res[0]
+  })
+}
+getCartValue(){
+  this.discountPrice=0;
+  this.price=0;
+  this.totalPrice=0
+  this.data?.forEach(element=>{
+    console.log("hello")
+   this.price+=Number(element?.price)*element?.quantity
+   this.discountPrice+=Number(element?.discount)/100*Number(element?.price)
+   console.log(this.discountPrice)
+  })
+  this.totalPrice=this.price-this.discountPrice
+  
 }
 
 addOn(item:any){
@@ -35,9 +61,10 @@ addOn(item:any){
   }
    this._service.updateCart(obj,item?.id).subscribe((res:any)=>{
     console.log(res)
-    this._service.getCartByUserId(3).subscribe((res:any)=>{
+    this._service.getCartByUserId(this.user?.id).subscribe((res:any)=>{
       console.log(res)
       this.data=res
+      this.getCartValue()
     })
    })
 }
@@ -57,9 +84,10 @@ subOn(item:any){
     }
      this._service.updateCart(obj,item?.id).subscribe((res:any)=>{
       console.log(res)
-      this._service.getCartByUserId(3).subscribe((res:any)=>{
+      this._service.getCartByUserId(this.user?.id).subscribe((res:any)=>{
         console.log(res)
         this.data=res
+        this.getCartValue()
       })
      })
   }

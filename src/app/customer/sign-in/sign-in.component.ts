@@ -25,6 +25,7 @@ onFormSubmit(){
     this._service.loginAdmin(this.offerForm.value).subscribe((res:any)=>{
       console.log(res)
       localStorage.setItem('userObj',JSON.stringify(res))
+      this._dialogRef.close(true);
     })
   }
 }

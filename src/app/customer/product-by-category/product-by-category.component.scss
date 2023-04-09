@@ -5,6 +5,8 @@
 .filter {
     width: 25%;
     background-color: #fff;
+    position: relative;
+    top: 85px;
 .bd{
     border-bottom: 1px solid grey;
     padding: 15px 0;
@@ -21,6 +23,8 @@
 
     width: 75%;
     margin-left: 10px;
+    position: relative;
+    top: 85px;
     background-color: #fff;
 
     .product {

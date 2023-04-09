@@ -10,14 +10,14 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { ProductByCategoryComponent } from './product-by-category/product-by-category.component';
-import {NgxPaginationModule} from 'ngx-pagination'
+import { NgxPaginationModule } from 'ngx-pagination'
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatRadioModule } from '@angular/material/radio';
 import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,7 +31,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-
+import { AddressComponent } from './address/address.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { AddupdateAddressComponent } from './addupdate-address/addupdate-address.component';
+import { FooterNewComponent } from './footer-new/footer-new.component';
+import { FooterComponent } from './footer/footer.component';
+import { FooterNComponent } from './footer-n/footer-n.component';
+import { BannerTwoComponent } from './banner-two/banner-two.component';
+import { FeaturedProductComponent } from './featured-product/featured-product.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +52,15 @@ import { MatTableModule } from '@angular/material/table';
     WishlistComponent,
     ProfileComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    AddressComponent,
+    ProfileDetailsComponent,
+    AddupdateAddressComponent,
+    FooterNewComponent,
+    FooterComponent,
+    FooterNComponent,
+    BannerTwoComponent,
+    FeaturedProductComponent
   ],
   imports: [
     CommonModule,
@@ -64,26 +80,40 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatChipsModule,
     MatTableModule,
     RouterModule.forChild(
       [
-        {path:'',component:LandingComponent},
+        { path: '', component: LandingComponent },
         {
-          path:'product-by-category/:id',component:ProductByCategoryComponent
+          path: 'all-products',
+          component: ProductByCategoryComponent
+
         },
         {
-          path:'cart',
-          component:CartComponent
+          path: 'profile',
+          component: ProfileDetailsComponent
         },
-        
         {
-          path:'wishlist',
-          component:WishlistComponent
+          path: 'address',
+          component: AddressComponent
+        },
+        {
+          path: 'product-by-category/:id', component: ProductByCategoryComponent
+        },
+        {
+          path: 'cart',
+          component: CartComponent
+        },
+
+        {
+          path: 'wishlist',
+          component: WishlistComponent
         }
-     
+
 
       ],
-      
+
     ),
   ]
 })

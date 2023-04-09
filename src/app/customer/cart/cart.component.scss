@@ -1,18 +1,23 @@
 .body{
     background-color: #f0f0f0;
     width: 100%;
+    position: relative;
+    top: 82px;
 }
 .w-80{
-    width: 80%;
+    width: 70%;
 }
 .w-20{
-    width: 20%;
+    width: 30%;
 }
 .card-item {
     background-color: #fff;
     width: 70%;
     height: 770px;
     overflow: auto;
+}
+.address{
+
 }
 
 .price {
@@ -36,6 +41,7 @@
 
 .product {
     margin-top: 15px;
+    border-bottom: 1px solid grey;
     .image {
         width: 25%;
         .quantity{
@@ -45,13 +51,17 @@
     }
 
     .details {
-        width: 55%;
+        width: 50%;
 
         .cost {
             margin-top: -10px;
+            font-size: 14px;
         }
     }
     .extra{
-        width: 20%;
+        width: 25%;
     }
+}
+.product:last-child{
+  border: none;
 }

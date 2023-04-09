@@ -1,24 +1,44 @@
-<div mat-dialog-title>
-    <h1 class="text-center">Sign In</h1>
+<div mat-dialog-title >
+    <h1 class="text-center">Add Address</h1>
 </div>
-<form [formGroup]="offerForm" (ngSubmit)="onFormSubmit()">
+<form [formGroup]="offerForm" (ngSubmit)="onFormSubmit()" >
     <div mat-dialog-content class="content">
+      
         <div class="row">
             <mat-form-field appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput type="text" placeholder="First100, Welcome500" formControlName="email">
+                <mat-label>City</mat-label>
+                <input matInput type="text" placeholder="Kolkata" formControlName="city">
             </mat-form-field>
-           
+            <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <input matInput placeholder="500,1000..." formControlName="state">
+            </mat-form-field>
+            
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <input matInput type="text" placeholder="First100, Welcome500" formControlName="country">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Landmark</mat-label>
+                <input matInput placeholder="500,1000..." formControlName="landmark">
+            </mat-form-field>
+            
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Pincode</mat-label>
+                <input matInput type="text" placeholder="First100, Welcome500" formControlName="pinCode">
+            </mat-form-field>
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Landmark</mat-label>
+                <input matInput placeholder="500,1000..." formControlName="amount">
+            </mat-form-field> -->
             
         </div>
 
-        <div class="row">
-           <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="lorem ipsum...." formControlName="password">
-            </mat-form-field>
-         
-        </div>
+        
         <!-- <div class="row">
            
           
@@ -60,6 +80,6 @@
     </div>
     <div mat-dialog-actions class="action">
         <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
-        <button mat-raised-button color="primary" type="submit">Sign In</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
     </div>
 </form>
