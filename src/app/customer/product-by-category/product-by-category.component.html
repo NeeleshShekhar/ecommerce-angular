@@ -35,26 +35,46 @@
                 <img [src]="item?.imageURL" alt="" width="300px" height="200px">
             </div>
             <div class="features">
-                <h1>{{item?.name}}</h1>
-                <p><span class="badge badge-pill badge-primary">4 star</span></p>
+                <h1 class="mx-2">{{item?.name}}</h1>
+                <p *ngIf="item?.rating==3" class="mx-2"><i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  
+                   
+                </p>
+                <p *ngIf="item?.rating==4" class="mx-2"><i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  
+                </p>
+                <p *ngIf="item?.rating==5" class="mx-2"><i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                 
+                </p>
+               
                 <ul>
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
+                    <li>{{item?.keyfeature1}} </li>
+                    <li>{{item?.keyfeature2}} </li>
+                    <li>{{item?.keyfeature3}} </li>
+                  
 
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
+                    <li>{{item?.keyfeature4}} </li>
 
                 </ul>
             </div>
             <div class="pricing">
-                <h1 class="fw-bolder m-4">RS {{item?.price -item?.discountPercent/100*item?.price}}</h1>
-                <p class="off"><del>{{item?.price}}</del><span class="text-success">{{item?.discountPercent}}%
+                <h1 class="fw-bolder m-4">₹​  {{item?.price -item?.discountPercent/100*item?.price}}</h1>
+                <p class="off"><del>₹​  {{item?.price}}</del><span class="text-success fw-bolder"> {{item?.discountPercent}}%
                         off</span></p>
                 <p class="text-secondary off">Free Delivery</p>
+                <p class="fw-bolder text-success off">5+ offers</p>
             </div>
         </div>
-        <pagination-controls (pageChange)="p = $event" style="text-align: center;"></pagination-controls>
+        <pagination-controls *ngIf="data.length>2" (pageChange)="p = $event" style="text-align: center;"></pagination-controls>
 
     </div>
 

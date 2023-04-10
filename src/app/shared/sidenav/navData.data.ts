@@ -8,7 +8,7 @@ export const navData=[
     },
     {
         routerLink:'admin/offers',
-        icon:'fal fa-home',
+        icon:'fa fa-ticket',
         label:'Offer'
 
 
@@ -16,14 +16,14 @@ export const navData=[
     
     {
         routerLink:'admin/products',
-        icon:'fal fa-home',
+        icon:'fa fa-shopping-bag',
         label:'Product'
 
 
     },
     {
         routerLink:'admin/banner',
-        icon:'fal fa-home',
+        icon:'fa fa-file-image-o',
         label:'Banner'
     }
 

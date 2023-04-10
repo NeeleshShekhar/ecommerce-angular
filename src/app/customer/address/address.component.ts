@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { AddupdateAddressComponent } from '../addupdate-address/addupdate-address.component';
 import { AdminService } from 'src/app/admin/admin.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-address',
@@ -12,7 +13,8 @@ import { AdminService } from 'src/app/admin/admin.service';
 })
 export class AddressComponent {
   user: any
-  constructor(private router: Router, private _dialog: MatDialog, private _service: AdminService) {
+  constructor(private router: Router, private _dialog: MatDialog, private _service: AdminService,
+    private _toastr:ToastrService) {
     
   }
   data:any[]=[]
@@ -38,11 +40,21 @@ export class AddressComponent {
     dialogRef.afterClosed().subscribe({
       next: (val: any) => {
         if (val) {
+          this._toastr.success("Address Added!!")
           // this.getCategory();
+          this.getAddress()
 
         }
       },
     });
+  }
+  remove(id:any){
+    this._service.deletAddress(id).subscribe((res:any)=>{
+      console.log(res)
+      this._toastr.warning("Address Removed!!")
+      this.getAddress()
+
+    })
   }
   openEditForm(data: any) {
     const dialogRef = this._dialog.open(AddupdateAddressComponent, {
@@ -52,6 +64,7 @@ export class AddressComponent {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
+          this._toastr.success("Address Updated!!")
           this.getAddress();
         }
       },

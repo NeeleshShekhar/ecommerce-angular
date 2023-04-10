@@ -7,13 +7,34 @@
     top:300px;
     
    left: 2px;
+   .img img {
+    width: 11rem;
+    height: 8rem;
+    margin: auto;
+}
   
   }
   .shadow{
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      cursor: pointer;
   }
   .heading{
     position: relative;
     top: 300px;
  
+ }
+ .rating{
+    margin-left: -10px;
+    .left{
+        width: 90%;
+        p{
+            margin-top: -15px;
+            i{
+                color: goldenrod;
+            }
+        }
+    }
+    .right{
+        width: 10%;
+    }
  }

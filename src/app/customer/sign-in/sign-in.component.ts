@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/admin/admin.service';
 
 @Component({
@@ -16,7 +17,7 @@ offerForm = new FormGroup({
   // amount: new FormControl('',Validators.required)
 });
 constructor(private _dialogRef: MatDialogRef<SignInComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: any,private _service:AdminService){
+  @Inject(MAT_DIALOG_DATA) public data: any,private _service:AdminService,private _toastr:ToastrService){
   
 }
 
@@ -25,6 +26,7 @@ onFormSubmit(){
     this._service.loginAdmin(this.offerForm.value).subscribe((res:any)=>{
       console.log(res)
       localStorage.setItem('userObj',JSON.stringify(res))
+      this._toastr.success('Hello world!', 'Toastr fun!')
       this._dialogRef.close(true);
     })
   }

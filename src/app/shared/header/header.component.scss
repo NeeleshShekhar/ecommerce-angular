@@ -1,24 +1,27 @@
 .header{
   position: fixed;
   width: 100%;
-  background-color: #6351ce;
+  background-color: #050a30;
   z-index: 9999;
   .inner{
     width: 75%;
     margin: auto;
-    border: 1px solid red;
+    // border: 1px solid red;
     .image{
       width: 30%;
-      border: 1px solid black;
+      // border: 1px solid black;
+      img{
+        margin: auto;
+      }
     }
     .right{
       width: 70%;
-      border: 1px solid grey;
+      // border: 1px solid grey;
     
       ul{
         width: 100%;
         margin: auto;
-        margin-top: 15px;
+        margin-top: 12px;
         
         li{
           list-style: none;

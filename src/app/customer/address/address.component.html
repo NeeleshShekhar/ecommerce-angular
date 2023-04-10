@@ -17,7 +17,7 @@
                     <button mat-icon-button color="primary" (click)="openEditForm(item)">
                         <mat-icon>edit</mat-icon>
                       </button>
-                      <button mat-icon-button color="warn" >
+                      <button mat-icon-button color="warn" (click)="remove(item?.id)">
                         <mat-icon>delete</mat-icon>
                       </button>
                 </div>

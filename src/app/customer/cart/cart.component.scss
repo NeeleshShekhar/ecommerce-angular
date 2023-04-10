@@ -26,6 +26,12 @@
     margin-left: 20px;
     border-radius: 5px;
 }
+.offer{
+    background-color: #fff;
+    width: 100%;
+    // margin-left: 20px;
+    border-radius: 5px;
+}
 
 .bd {
     border: 1px solid grey;
@@ -42,8 +48,13 @@
 .product {
     margin-top: 15px;
     border-bottom: 1px solid grey;
+   
     .image {
         width: 25%;
+        img{
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
         .quantity{
             margin-left: 25px;
             margin-top: 8px;
@@ -52,9 +63,21 @@
 
     .details {
         width: 50%;
+        h2{
+            margin-left: -10px;
+            
+        }
+        .icon{
+            margin-left: -10px;
+            margin-top: -10px;
+            i{
+                color: goldenrod;
+            }
+        }
+        
 
         .cost {
-            margin-top: -10px;
+            margin-top: -8px;
             font-size: 14px;
         }
     }
@@ -64,4 +87,7 @@
 }
 .product:last-child{
   border: none;
+}
+.btns{
+    width: 90%;
 }

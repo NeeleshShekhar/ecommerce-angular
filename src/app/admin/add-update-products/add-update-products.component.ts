@@ -17,11 +17,15 @@ export class AddUpdateProductsComponent {
     image: new FormControl('',Validators.required),
     banner: new FormControl(''),
     review: new FormControl(''),
-    rating: new FormControl(''),
+    rating: new FormControl('',Validators.required),
     price: new FormControl('',Validators.required),
     quantity: new FormControl('',Validators.required),
     cats: new FormControl('',Validators.required),
-    discount: new FormControl('',Validators.required)
+    discount: new FormControl('',Validators.required),
+    kf1: new FormControl('',Validators.required),
+    kf2: new FormControl('',Validators.required),
+    kf3: new FormControl('',Validators.required),
+    kf4: new FormControl('',Validators.required)
 
   });
   cats: any[] = []
@@ -39,7 +43,14 @@ export class AddUpdateProductsComponent {
       quantity:this.data.quantity,
       price:this.data.price,
       discount:this.data.discountPercent,
-      cats:this.data.categoryId
+      cats:this.data.categoryId,
+      kf1:this.data.keyfeature1,
+      kf2:this.data.keyfeature2,
+      kf3:this.data.keyfeature3,
+      kf4:this.data.keyfeature4,
+      rating:this.data.rating
+
+
       
     });
   }
@@ -63,7 +74,11 @@ export class AddUpdateProductsComponent {
           "isActive": true,
           "categoryId": Number(this.productForm.value.cats),
           "price": this.productForm.value.price,
-          "rating": 0,
+          "keyfeature1":this.productForm.value.kf1,
+          "keyfeature2":this.productForm.value.kf2,
+          "keyfeature3":this.productForm.value.kf3,
+          "keyfeature4":this.productForm.value.kf4,
+          "rating": this.productForm.value.rating,
           "reviewID": 0,
           "offerID": 0,
           "discountPercent": this.productForm.value.discount,
@@ -89,7 +104,11 @@ export class AddUpdateProductsComponent {
           "isActive": true,
           "categoryId": Number(this.productForm.value.cats),
           "price": this.productForm.value.price,
-          "rating": 0,
+          "keyfeature1":this.productForm.value.kf1,
+          "keyfeature2":this.productForm.value.kf2,
+          "keyfeature3":this.productForm.value.kf3,
+          "keyfeature4":this.productForm.value.kf4,
+          "rating": this.productForm.value.rating,
           "reviewID": 0,
           "offerID": 0,
           "discountPercent": this.productForm.value.discount,

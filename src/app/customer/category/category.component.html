@@ -3,10 +3,10 @@
 <h1 class="heading text-center fw-bolder">Categories</h1>
 <div class="containers">
   
-    <div class="box" *ngFor="let item of data">
-        <div class="imgBox" (click)="gotoListingPage(item?.id)">
+    <div class="box mx-4" *ngFor="let item of data,index as i">
+        <div class="imgBox" (click)="gotoListingPage(item?.id)" >
             <img [src]="item?.imageURL" alt="">
-            <p class="text-center fw-bolder">{{item?.name}}</p>
+            <p class="text-center fw-bolder" style="margin-top: 5px;margin-left: 10px;">{{item?.name}}</p>
         </div>
        
     </div>

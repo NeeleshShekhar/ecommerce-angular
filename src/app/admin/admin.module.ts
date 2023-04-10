@@ -29,6 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { BannerComponent } from './banner/banner.component';
 import { AddUpdateBannerComponent } from './add-update-banner/add-update-banner.component';
+import { HeaderComponent } from './header/header.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -44,7 +45,8 @@ import { AddUpdateBannerComponent } from './add-update-banner/add-update-banner.
     AddUpdateProductsComponent,
     LoginComponent,
     BannerComponent,
-    AddUpdateBannerComponent
+    AddUpdateBannerComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

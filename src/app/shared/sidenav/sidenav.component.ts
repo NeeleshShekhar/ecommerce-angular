@@ -50,6 +50,10 @@ showAdminSideNav:boolean=false
   }
  
    }
+   logout(){
+    localStorage.clear()
+   window.location.href='admin'
+  }
 
   ngOnInit(): void {
     this.screenWidth=window.innerWidth

@@ -16,6 +16,7 @@ ngOnInit(){
 this._service.getCategory().subscribe((res:any)=>{
   console.log(res)
   this.data=res
+  this.data.splice(9,this.data.length)
 })
 }
 gotoListingPage(id:any){

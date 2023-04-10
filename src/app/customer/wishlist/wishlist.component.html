@@ -1,31 +1,48 @@
-<div class="container">
+<div class="container d-flex">
     <div class="profile">
         <app-profile></app-profile>
     </div>
     <div class="wishlist">
-        <div class="product my-2 d-flex p-3" *ngFor="let item of data">
+        <div class="product my-2 p-3 d-flex" *ngFor="let item of data">
             <div class="image">
-                <img [src]="item?.imageURL" alt="" width="300px" height="200px">
+                <img [src]="item?.image" alt="" width="150" height="150px">
+                <!-- <p class="quantity"><span (click)="subOn(item)"><i class="fa fa-minus-circle fa-lg"
+                            aria-hidden="true"></i> </span> {{item?.quantity}} <span (click)="addOn(item)"> <i
+                            class="fa fa-plus-circle fa-lg" aria-hidden="true"></i></span></p> -->
             </div>
-            <div class="features">
-                <h1>{{item?.name}}</h1>
-                <p><span class="badge badge-pill badge-primary">4 star</span></p>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
+            <div class="details">
+                <h2 class="fw-bold fs-5">{{item?.productName}}</h2>
+                <p *ngIf="item?.rating==3" class="icon"><i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                    <li>Lorem ipsum dolor sit amet consectetur </li>
 
-                </ul>
+                </p>
+                <p *ngIf="item?.rating==4" class="icon"><i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                </p>
+                <p *ngIf="item?.rating==5" class="icon"><i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                </p>
+                <p class="cost"><del class="fs-6 text-muted fw-bold" style="margin-left: -10px;">₹
+                        {{item?.price}}</del> <br><span class="fw-bolder fs-6" style="margin-left: -10px;">₹
+                        {{item?.price -item?.discount/100*item?.price}}</span> <span class="fw-bolder text-success">
+                        {{item?.discount}}% off</span></p>
             </div>
-            <div class="pricing">
-                <h1 class="fw-bolder m-4">RS {{item?.price -item?.discountPercent/100*item?.price}}</h1>
-                <p class="off"><del>{{item?.price}}</del><span class="text-success">{{item?.discountPercent}}%
-                        off</span></p>
-                <p class="text-secondary off">Free Delivery</p>
+            <div class="extra">
+                <p class="fw-bold fs-6">Delivery in 2 days | <span class="text-success fw-bolder">Free</span> </p>
+                <button class="btn btn-success my-2" (click)="addToCart(item)">+ Add to Cart</button>
+                <button class="btn btn-danger" (click)="remove(item?.id)">- Remove</button>
             </div>
+
         </div>
     </div>
 </div>
+<app-footer-new></app-footer-new>

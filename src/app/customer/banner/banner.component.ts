@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { AdminService } from 'src/app/admin/admin.service';
 
 @Component({
   selector: 'app-banner',
@@ -31,5 +32,21 @@ export class BannerComponent {
       }
     },
     nav: true
+  }
+
+  constructor(private _service:AdminService){
+
+  }
+  ngOnInit(){
+this.getBanner()
+  }
+data:any[]=[]
+  getBanner(){
+    this._service.getBanners().subscribe((res:any)=>{
+      console.log(res)
+      this.data=res
+      console.log(res)
+      // this.data.splice(4,8)
+    })
   }
 }

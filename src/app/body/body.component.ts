@@ -26,5 +26,8 @@ export class BodyComponent {
       styleClass = 'body-md-screen'
     return styleClass;
   }
+  onActivate(){
+    window.scroll(0,0)
+  }
 
 }

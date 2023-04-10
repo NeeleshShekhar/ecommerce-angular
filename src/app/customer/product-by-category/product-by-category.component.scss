@@ -48,13 +48,20 @@
 
     .features {
         width: 35%;
+        p{
+            margin-top: -15px;
+            i{
+                color: goldenrod;
+            }
+        }
     }
 
     .pricing {
         width: 30%;
 
         .off {
-            margin-top: -10px;
+            margin-top: -20px;
+            margin-bottom: 20px;
             margin-left: 1.5rem;
         }
     }

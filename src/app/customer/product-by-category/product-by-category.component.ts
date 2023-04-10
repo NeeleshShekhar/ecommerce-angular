@@ -42,35 +42,27 @@ export class ProductByCategoryComponent {
   }
   filterByStar(value: any) {
     console.log(value.value)
+   this.data= this.data.filter(a => a.rating>=value.value);
+    console.log(this.data.filter(a => a.rating>=value.value))
   }
   filterByOrder(value: any) {
-    if (this.id == undefined) {
-      if (value.value == 1) {
-        this._service.getProductByPriceLtoH(0).subscribe((res: any) => {
-          console.log(res)
-          this.data = res
-        })
-      }
-      else {
-        this._service.getProductByPriceHtoL(0).subscribe((res: any) => {
-          console.log(res)
-          this.data = res
-        })
-      }
-    }
-    else{
-      if (value.value == 1) {
-        this._service.getProductByPriceLtoH(this.id).subscribe((res: any) => {
-          console.log(res)
-          this.data = res
-        })
-      }
-      else {
-        this._service.getProductByPriceHtoL(this.id).subscribe((res: any) => {
-          console.log(res)
-          this.data = res
-        })
-      }
-    }
+   
+   if(value.value==1){
+    this.data.sort((a, b) => (
+      // your sort logic
+      a.price - b.price // example : order by id
+    ));
+    console.log(this.data)
+   }
+   else
+   {
+    this.data.sort((a, b) => (
+      // your sort logic
+      b.price - a.price // example : order by id
+    ));
+   }
+
+      
+    
   }
 }

@@ -13,5 +13,11 @@
                 <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
             </a>
         </li>
+        <li class="sidenav-nav-item">
+            <a class="sidenav-nav-link" (click)="logout()">
+                <i class="sidenav-link-icon" [class]="'fa fa-power-off'"></i>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">Log Out</span>
+            </a>
+        </li>
     </ul>
 </div>

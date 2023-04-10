@@ -2,58 +2,117 @@
     <div class="container d-flex">
         <div class="card-item m-2">
             <div class="address p-2 my-2" style="margin-bottom: 15px;">
-               <div class="w-80">
-<p><span>{{address?.landmark}} ,</span> <span>{{address?.city}} ...</span></p>
-               </div>
-               <div class="w-20">
+                <div class="w-80">
+                    <mat-form-field style="width: 143%;">
+                        <mat-label>Select Address</mat-label>
+                        <mat-select (selectionChange)="onClick($event)">
+                            <mat-option *ngFor="let item of address" [value]="item?.id">
+                                <span>{{item?.landmark}} , </span><span>{{item?.city}} , </span> <span>{{item?.state}} ,
+                                </span><span>{{item?.country}} , </span> <span>{{item?.pinCode}}</span>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="w-20">
 
-               </div>
+                </div>
             </div>
             <div class="product my-2 p-3 d-flex" *ngFor="let item of data">
                 <div class="image">
-                    <img src="../../../assets/th.jpg" alt="" width="150" height="150px">
-                    <p class="quantity"><span (click)="subOn(item)"><i class="fa fa-minus-circle fa-lg" aria-hidden="true"></i> </span> {{item?.quantity}} <span (click)="addOn(item)"> <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i></span></p>
+                    <img [src]="item?.image" alt="" width="150" height="150px">
+                    <p class="quantity"><span (click)="subOn(item)"><i class="fa fa-minus-circle fa-lg"
+                                aria-hidden="true"></i> </span> {{item?.quantity}} <span (click)="addOn(item)"> <i
+                                class="fa fa-plus-circle fa-lg" aria-hidden="true"></i></span></p>
                 </div>
                 <div class="details">
                     <h2 class="fw-bold fs-5">{{item?.productName}}</h2>
-                    <p class="cost"><del>₹ {{item?.price}}</del> <br> ₹ {{item?.price -item?.discount/100*item?.price}} <span class="fw-bolder text-success">{{item?.discount}}% off</span></p>
+                    <p *ngIf="item?.rating==3" class="icon"><i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+
+                    </p>
+                    <p *ngIf="item?.rating==4" class="icon"><i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                    </p>
+                    <p *ngIf="item?.rating==5" class="icon"><i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                    </p>
+                    <p class="cost"><del class="fs-6 text-muted fw-bold" style="margin-left: -10px;">₹
+                            {{item?.price}}</del> <br><span class="fw-bolder fs-6" style="margin-left: -10px;">₹
+                            {{item?.price -item?.discount/100*item?.price}}</span> <span class="fw-bolder text-success">
+                            {{item?.discount}}% off</span></p>
                 </div>
                 <div class="extra">
-                    <p class="fw-800">Delivery in 2 days | <span class="text-success">Free</span> </p>
+                    <p class="fw-bold fs-6">Delivery in 2 days | <span class="text-success fw-bolder">Free</span> </p>
                 </div>
-                
+
             </div>
-            
+
+            <div class="btns d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-warning btn-lg">Place Order</button>
+            </div>
+
         </div>
-        <div class="price m-2" style="height: 300px;">
-            <p class="fs-5 px-2 py-3 bb">Price Details</p>
-            <div class="d-flex bb py-4 px-2">
-                <div class="w-80">
-                    <p>Price</p>
-                    <p>Discount</p>
-                    <p>Delivery Charges</p>
+        <div class="price m-2" style="height:330px;">
+            <div>
+                <p class="fs-5 px-2 py-3 bb">Price Details</p>
+                <div class="d-flex bb py-4 px-2">
+                    <div class="w-80">
+                        <p class="fs-6 fw-bold">Price</p>
+                        <p class="fs-6 fw-bold text-success">Discount</p>
+                        <p class="fs-6 fw-bold">Delivery Charges</p>
+                        <p class="fs-6 fw-bold text-success" *ngIf="offerValid">Coupon Discount</p>
+                    </div>
+                    <div class="w-20">
+                        <p class="fw-bolder fs-6">₹ {{price}}</p>
+                        <p class="fw-bold text-success fs-6">- ₹ {{discountPrice}}</p>
+                        <p class="fw-bold text-success fs-6">Free</p>
+                        <p class="fw-bold text-success fs-6" *ngIf="offerValid">- ₹ {{c_a}}</p>
+                    </div>
                 </div>
-                <div class="w-20">
-                    <p class="fw-bolder">₹ {{price}}</p>
-                    <p class="fw-bold text-success">- ₹ {{discountPrice}}</p>
-                    <p class="fw-bold text-success">Free</p>
+                <div class="bb d-flex py-2 px-2">
+                    <div class="w-80">
+                        <p class="fs-6 fw-bold">Total Amount</p>
+    
+                    </div>
+                    <div class="w-20">
+                        <p class="fs-6 fw-bolder">₹ {{totalPrice}}</p>
+    
+                    </div>
+                </div>
+                <div class="px-2 py-2">
+                    <p class="text-success fw-bold">You will save <span class="fw-bolder">₹ {{discountPrice}}</span> on this
+                        order</p>
                 </div>
             </div>
-            <div class="bb d-flex py-2 px-2">
-                <div class="w-80">
-                    <p class="fs-6 fw-800">Total Amount</p>
-                    
-                </div>
-                <div class="w-20">
-                    <p class="fs6 fw-bolder">₹ {{totalPrice}}</p>
-                  
-                </div>
-            </div>
-            <div class="px-2 py-2">
-                <p class="text-success">You will save ₹ {{discountPrice}} on this order</p>
+            <div class="offer">
+                <mat-form-field style="width: 97%;border-radius: 5px;margin-left: 6px;">
+                    <mat-label>Select Coupon</mat-label>
+                    <mat-select (selectionChange)="checkOffer($event)">
+                        <mat-option *ngFor="let item of offer,index as i" [value]="item">
+                            {{item?.description}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p class="text-success fw-bolder p-2" style="    margin-left: 10px;
+                margin-top: -12px;" *ngIf="offerValid">Congratulations!! Coupon Applied!!</p>
+                <p class="text-danger p-2 fw-bolder" style="    margin-left: 10px;
+                margin-top: -12px;"  *ngIf="!offerValid&&isCheck">Offer is not valid!! Please add some more item</p>
+               <!-- <div class="d-flex justify-content-end">
+                <button class="btn btn-primary my-2" (click)="applyOffer()">Apply</button>
+               </div> -->
             </div>
            
+
         </div>
     </div>
 </div>
-<app-footer></app-footer>
+<app-footer-n></app-footer-n>

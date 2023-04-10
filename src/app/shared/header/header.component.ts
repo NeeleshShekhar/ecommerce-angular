@@ -32,4 +32,10 @@ this.router.navigateByUrl('customer/profile')
       },
     });
   }
+  reload(){
+    window.location.href='/'
+  }
+  gotoWishlist(){
+    this.router.navigateByUrl('customer/wishlist')
+  }
 }

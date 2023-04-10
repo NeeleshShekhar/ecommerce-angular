@@ -1,13 +1,13 @@
 <div class="header">
    <div class="inner d-flex">
       <div class="image">
-         <img src="https://th.bing.com/th?id=OIP.idB_-eo5pNgOG8Ker3jEpgHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" height="75px" width="75px" alt="">
+         <img src="../../../assets/logo.PNG" height="70px" width="250px" alt="" style="margin-top: 7px;cursor: pointer;" (click)="reload()">
       </div>
       <div class="right" >
          <ul class="d-flex justify-content-end align-items-center">
             
-            <li (click)="gotoCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</li>
-            <li><i class="fa fa-heart" aria-hidden="true"></i> Wishlist</li>
+            <li class="fs-6" (click)="gotoCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</li>
+            <li class="fs-6" (click)="gotoWishlist()"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist</li>
             <!-- <li>More</li> -->
             <li *ngIf="!isLoggedin">
                <button class="btn btn-primary" (click)="openAddEditForm()">Login</button>

@@ -59,11 +59,26 @@ url:string='https://localhost:7126/api/'
   addToCart(data:any){
    return this.http.post(`${this.url}Carts`,data)
   }
+  addToWishlist(data:any){
+    return this.http.post(`${this.url}Wishlists`,data)
+   }
   updateCart(data:any,id:any){
     return this.http.put(`${this.url}Carts/${id}`,data)
   }
   getCartByUserId(id:any){
     return this.http.get(`${this.url}Carts/getCartByUserId/${id}`)
+  }
+  getWishlistByUserId(id:any){
+    return this.http.get(`${this.url}Wishlists/getWishlistByUserId/${id}`)
+  }
+  deleteWishlist(id:any){
+    return this.http.delete(`${this.url}Wishlists/${id}`)
+  }
+  deleteCart(id:any){
+    return this.http.delete(`${this.url}Carts/${id}`)
+  }
+  deletAddress(id:any){
+    return this.http.delete(`${this.url}Addresses/${id}`)
   }
 
   getProductByPriceHtoL(id:any){
@@ -81,5 +96,8 @@ url:string='https://localhost:7126/api/'
   }
   getAddressByuserId(id:any){
     return this.http.get(`${this.url}Addresses/getByUserId/${id}`)
+  }
+  getBanners(){
+   return  this.http.get(`${this.url}Banners`)
   }
 }

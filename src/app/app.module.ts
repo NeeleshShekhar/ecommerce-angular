@@ -7,7 +7,8 @@ import { SharedModule } from './shared/shared.module';
 import { BodyComponent } from './body/body.component';
 import { AdminModule } from './admin/admin.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { ToastrModule } from 'ngx-toastr';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { FooterNewComponent } from './footer-new/footer-new.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AdminModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    ToastrModule.forRoot()
    
   ],
   providers: [],
