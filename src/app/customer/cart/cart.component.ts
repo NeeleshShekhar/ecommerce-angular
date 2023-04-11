@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/admin/admin.service';
-
+import { loadStripe, Stripe } from '@stripe/stripe-js';
+// import { Stripe } from '@stripe/stripe-js';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -39,6 +40,7 @@ export class CartComponent {
 
   onClick(value: any) {
     this.ad = value.value
+    
     console.log(value.value)
   }
   offer: any[] = []
@@ -54,7 +56,7 @@ export class CartComponent {
   }
   offerValid: boolean = false
   isCheck: boolean = false
-  c_a: any
+  c_a: any = 0
   checkOffer(value: any) {
     this.isCheck = true
     console.log(value.value)
@@ -109,6 +111,44 @@ export class CartComponent {
 
 
   }
+  plcaceOrder() {
+
+  
+  
+      this.data.forEach(ele => {
+        let obj = {
+          "productName": ele?.productName,
+          "productId": JSON.stringify(ele?.id),
+          "quantity": ele?.quantity,
+          "totalPrice": ele?.price,
+          "image": ele?.image,
+          "rating": ele?.rating,
+          "amountSaved": JSON.stringify(ele?.price - (ele?.discount / 100 * ele?.price)),
+          "transactionId": JSON.stringify(Math.floor((Math.random()*60000000)+1)),
+          "createdAt": new Date(),
+          "userId": this.user.id,
+          "createdBy": JSON.stringify(this.c_a),
+          "addressId": this.ad
+        }
+        this._service.addOrder(obj).subscribe((res: any) => {
+          console.log(res)
+          this._service.deleteCart(ele?.id).subscribe((res: any) => {
+            console.log(res)
+          })
+        })
+      })
+      
+    this.pay(this.totalPrice)
+   
+   
+    
+  //  location.reload()
+
+
+
+
+
+  }
   subOn(item: any) {
     if (item.quantity > 1) {
       let obj = {
@@ -146,4 +186,54 @@ export class CartComponent {
     }
 
   }
+  handler: any
+  pay(amount: any) {
+
+    var handler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51Mn18bSF5Bhh2uVr1gsTXJdTW45wWRy4BumyTiVde8cF436gQbKIUBzf1iGECnBDARZXdWqNMGCwRslSlKhYaKEk00mRdyK20b',
+      locale: 'auto',
+      token: function (token: any) {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        alert("Payment Succes!! Order Placed")
+        // this._toastr.err
+        console.log(token)
+        // return token;
+
+      }
+    });
+
+    handler.open({
+      name: 'ShipKart',
+      description: 'Your one stop Shopping solution',
+      amount: amount * 100
+    });
+
+  }
+
+  loadStripe() {
+
+    if (!window.document.getElementById('stripe-script')) {
+      var s = window.document.createElement("script");
+      s.id = "stripe-script";
+      s.type = "text/javascript";
+      s.src = "https://checkout.stripe.com/checkout.js";
+      s.onload = () => {
+        this.handler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51Mn18bSF5Bhh2uVr1gsTXJdTW45wWRy4BumyTiVde8cF436gQbKIUBzf1iGECnBDARZXdWqNMGCwRslSlKhYaKEk00mRdyK20b',
+          locale: 'auto',
+          token: function (token: any) {
+            // You can access the token ID with `token.id`.
+            // Get the token ID to your server-side code for use.
+            console.log(token)
+            alert('Payment Success!!');
+          }
+        });
+      }
+
+      window.document.body.appendChild(s);
+    }
+  }
+
+
 }

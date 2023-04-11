@@ -39,7 +39,8 @@ import { FooterNewComponent } from './footer-new/footer-new.component';
 import { FooterComponent } from './footer/footer.component';
 import { FooterNComponent } from './footer-n/footer-n.component';
 import { BannerTwoComponent } from './banner-two/banner-two.component';
-import { FeaturedProductComponent } from './featured-product/featured-product.component'
+import { FeaturedProductComponent } from './featured-product/featured-product.component';
+import { MyOrderComponent } from './my-order/my-order.component'
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { FeaturedProductComponent } from './featured-product/featured-product.co
     FooterComponent,
     FooterNComponent,
     BannerTwoComponent,
-    FeaturedProductComponent
+    FeaturedProductComponent,
+    MyOrderComponent
   ],
   imports: [
     CommonModule,
@@ -109,6 +111,10 @@ import { FeaturedProductComponent } from './featured-product/featured-product.co
         {
           path: 'wishlist',
           component: WishlistComponent
+        },
+        {
+          path: 'my-order',
+          component:MyOrderComponent
         }
 
 

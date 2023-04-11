@@ -19,6 +19,9 @@ export class ProfileComponent {
   profile(){
     this.router.navigateByUrl('customer/profile') 
   }
+  gotoOrder(){
+    this.router.navigateByUrl('customer/my-order') 
+  }
   address(){
     this.router.navigateByUrl('customer/address') 
   }
