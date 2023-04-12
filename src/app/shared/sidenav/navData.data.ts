@@ -21,10 +21,10 @@ export const navData=[
 
 
     },
-    {
-        routerLink:'admin/banner',
-        icon:'fa fa-file-image-o',
-        label:'Banner'
-    }
+    // {
+    //     routerLink:'admin/banner',
+    //     icon:'fa fa-file-image-o',
+    //     label:'Banner'
+    // }
 
 ]

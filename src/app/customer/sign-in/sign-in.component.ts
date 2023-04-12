@@ -16,6 +16,14 @@ offerForm = new FormGroup({
   password: new FormControl('',Validators.required),
   // amount: new FormControl('',Validators.required)
 });
+regForm = new FormGroup({
+  fname: new FormControl('',Validators.required),
+  lname: new FormControl('',Validators.required),
+  phone: new FormControl('',Validators.required),
+  email: new FormControl('',Validators.required),
+  password: new FormControl('',Validators.required),
+  // amount: new FormControl('',Validators.required)
+});
 constructor(private _dialogRef: MatDialogRef<SignInComponent>,
   @Inject(MAT_DIALOG_DATA) public data: any,private _service:AdminService,private _toastr:ToastrService){
   
@@ -26,9 +34,16 @@ onFormSubmit(){
     this._service.loginAdmin(this.offerForm.value).subscribe((res:any)=>{
       console.log(res)
       localStorage.setItem('userObj',JSON.stringify(res))
-      this._toastr.success('Hello world!', 'Toastr fun!')
+      this._toastr.success('Happy Shopping!')
       this._dialogRef.close(true);
     })
   }
+}
+isRegister:boolean=false
+register(){
+this.isRegister=true
+}
+onSubmit(){
+
 }
 }

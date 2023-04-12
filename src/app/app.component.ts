@@ -14,12 +14,16 @@ interface SideNavToggle{
 export class AppComponent {
   isSideNavClosed=false
   screenWidth=0
+  hideNav:boolean=false
   showNav:boolean=true
   showAdminSideNav:boolean=false
   constructor(private router:Router,private _dialog:MatDialog){
     if(localStorage.getItem('isAdmin') =='true'){
       this.showAdminSideNav=true
     }
+    if(window.location.pathname=='/admin')
+    this.hideNav=true
+    // console.log()
   }
   // ngOnInit(){
   //   if(this.router.url==='admin')

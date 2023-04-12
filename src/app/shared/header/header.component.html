@@ -6,8 +6,8 @@
       <div class="right" >
          <ul class="d-flex justify-content-end align-items-center">
             
-            <li class="fs-6" (click)="gotoCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</li>
-            <li class="fs-6" (click)="gotoWishlist()"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist</li>
+            <li class="fs-6" style="margin-top: 7px;" matB (click)="gotoCart()"><i class="fa fa-shopping-cart"  aria-hidden="true"></i> Cart </li>
+            <li class="fs-6" style="margin-top: 7px;" (click)="gotoWishlist()"><i class="fa fa-heart"  aria-hidden="true"></i> Wishlist</li>
             <!-- <li>More</li> -->
             <li *ngIf="!isLoggedin">
                <button class="btn btn-primary" (click)="openAddEditForm()">Login</button>

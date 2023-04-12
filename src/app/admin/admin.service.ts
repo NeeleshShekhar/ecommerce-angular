@@ -22,9 +22,15 @@ url:string='https://localhost:7126/api/'
   deleteCategory(id:any){
     return this.http.delete(`${this.url}Categories/${id}`)
   }
+  getUserById(id:any){
+    return this.http.get(`${this.url}users/${id}`)
+  }
 
   getProducts(){
     return this.http.get(`${this.url}Products`)
+  }
+  updateUser(data:any,id:any){
+    return this.http.put(`${this.url}users/${id}`,data)
   }
 
   addProduct(data:any){

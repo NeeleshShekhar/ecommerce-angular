@@ -1,10 +1,17 @@
+<app-header></app-header>
 <div class="container-fluid d-flex bg">
     <div class="filter">
         <h1 class="text-center p-3">Filter</h1>
         <div class="card-cat p-2">
             <div class="container bd">
-                <h4>Price</h4>
-                <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+                <h4>Search</h4>
+                <div class="">
+
+
+                    <input type="search" class="form-control" id="datatable-search-input" [(ngModel)]="userFilter.name">
+
+
+                </div>
             </div>
             <div class="container bd">
                 <h4>Sort By</h4>
@@ -12,25 +19,26 @@
                     <mat-radio-button value="1">Price(Low to High)</mat-radio-button>
                     <br>
                     <mat-radio-button value="2">Price(High to Low)</mat-radio-button>
-                  </mat-radio-group>
+                </mat-radio-group>
             </div>
             <div class="container bd">
                 <h4>Ratings</h4>
-                <mat-radio-group   (change)="filterByStar($event)">
+                <mat-radio-group (change)="filterByStar($event)">
                     <mat-radio-button value="3">3 star</mat-radio-button>
                     <br>
                     <mat-radio-button value="4">4 star</mat-radio-button>
                     <br>
                     <mat-radio-button value="5">5 star</mat-radio-button>
 
-                  </mat-radio-group>
+                </mat-radio-group>
             </div>
-           
+
 
         </div>
     </div>
     <div class="products">
-        <div class="product my-2 d-flex p-3" *ngFor="let item of data| paginate: { itemsPerPage: 2, currentPage: p }">
+        <div class="product my-2 d-flex p-3"
+            *ngFor="let item of data | filterBy:userFilter| paginate: { itemsPerPage: 2, currentPage: p }">
             <div class="image">
                 <img [src]="item?.imageURL" alt="" width="300px" height="200px">
             </div>
@@ -39,42 +47,49 @@
                 <p *ngIf="item?.rating==3" class="mx-2"><i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
-                  
-                   
+
+
                 </p>
                 <p *ngIf="item?.rating==4" class="mx-2"><i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
-                  
+
                 </p>
                 <p *ngIf="item?.rating==5" class="mx-2"><i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
-                 
+
                 </p>
-               
+
                 <ul>
                     <li>{{item?.keyfeature1}} </li>
                     <li>{{item?.keyfeature2}} </li>
                     <li>{{item?.keyfeature3}} </li>
-                  
+
 
                     <li>{{item?.keyfeature4}} </li>
 
                 </ul>
             </div>
             <div class="pricing">
-                <h1 class="fw-bolder m-4">₹​  {{item?.price -item?.discountPercent/100*item?.price}}</h1>
-                <p class="off"><del>₹​  {{item?.price}}</del><span class="text-success fw-bolder"> {{item?.discountPercent}}%
+                <h1 class="fw-bolder m-4">₹​ {{item?.price -item?.discountPercent/100*item?.price}}</h1>
+                <p class="off"><del>₹​ {{item?.price}}</del><span class="text-success fw-bolder">
+                        {{item?.discountPercent}}%
                         off</span></p>
                 <p class="text-secondary off">Free Delivery</p>
                 <p class="fw-bolder text-success off">5+ offers</p>
+                <p class="e">
+                    <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 20px;" (click)="addToCart(item)"></i>
+
+                    <i class="fa fa-heart" aria-hidden="true" style="font-size: 20px;margin-left: 15px;" (click)="addToWishlist(item)"></i>
+                </p>
             </div>
         </div>
-        <pagination-controls *ngIf="data.length>2" (pageChange)="p = $event" style="text-align: center;"></pagination-controls>
+        <pagination-controls *ngIf="data.length>2" (pageChange)="p = $event"
+            style="text-align: center;"></pagination-controls>
 
     </div>
 

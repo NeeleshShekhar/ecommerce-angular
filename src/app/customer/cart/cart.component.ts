@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/admin/admin.service';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { MatDialog } from '@angular/material/dialog';
+import { SignInComponent } from '../sign-in/sign-in.component';
 // import { Stripe } from '@stripe/stripe-js';
 @Component({
   selector: 'app-cart',
@@ -11,11 +13,14 @@ import { loadStripe, Stripe } from '@stripe/stripe-js';
 export class CartComponent {
   data: any[] = []
   constructor(private _service: AdminService,
-    private _toastr: ToastrService) {
+    private _toastr: ToastrService,private _dialog:MatDialog) {
 
   }
   user: any
+  login:boolean=false
   ngOnInit() {
+    if(localStorage.getItem('userObj')==null)
+    this.login=true
     this.user = JSON.parse(localStorage.getItem('userObj')!)
     this._service.getCartByUserId(this.user?.id).subscribe((res: any) => {
       console.log(res)
@@ -37,10 +42,32 @@ export class CartComponent {
       this.address = res
     })
   }
+  openAddEditForm() {
+    const dialogRef = this._dialog.open(SignInComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val:any) => {
+        if (val) {
+
+          // this.getCategory();
+          if (localStorage.getItem('userObj') != null)
+          {
+            this.user = JSON.parse(localStorage.getItem('userObj')!)
+            this._service.getCartByUserId(this.user?.id).subscribe((res: any) => {
+              console.log(res)
+              this.data = res
+              this.getCartValue()
+              this.login=false
+          })
+        }
+    // this.isLoggedin=true
+        }
+      },
+    });
+  }
 
   onClick(value: any) {
     this.ad = value.value
-    
+
     console.log(value.value)
   }
   offer: any[] = []
@@ -134,6 +161,7 @@ export class CartComponent {
           console.log(res)
           this._service.deleteCart(ele?.id).subscribe((res: any) => {
             console.log(res)
+            
           })
         })
       })
@@ -206,7 +234,8 @@ export class CartComponent {
     handler.open({
       name: 'ShipKart',
       description: 'Your one stop Shopping solution',
-      amount: amount * 100
+      amount: amount * 100,
+      currency:'INR'
     });
 
   }

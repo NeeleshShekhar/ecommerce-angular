@@ -1,8 +1,9 @@
+<!-- <app-header></app-header> -->
 <div class="container-fluid body">
     <div class="container d-flex">
         <div class="card-item m-2">
             <div class="address p-2 my-2" style="margin-bottom: 15px;">
-                <div class="w-80">
+                <div class="w-80" *ngIf="data.length!=0">
                     <mat-form-field style="width: 143%;">
                         <mat-label>Select Address</mat-label>
                         <mat-select (selectionChange)="onClick($event)">
@@ -55,14 +56,25 @@
                 </div>
 
             </div>
+            <div class="login" *ngIf="login">
+                <div>
+                    <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+                        alt="" height="200px" width="200px" style="margin-left: 55px;">
+                </div>
+                <h2 class="text-center">Missing Cart items?</h2>
+                <p class="text-center">Login to see the items you added previously</p>
+                <button class="btn btn-primary" style="margin-left: 130px;" (click)="openAddEditForm()">Login</button>
+            </div>
+            <!-- <h1 class="text-center fw-bolder">Cart is empty</h1> -->
 
-            <div class="btns d-flex justify-content-end">
-                <button type="button" class="btn btn-outline-warning btn-lg" (click)="plcaceOrder()">Place Order</button>
+            <div class="btns d-flex justify-content-end" *ngIf="data.length!=0">
+                <button type="button" class="btn btn-outline-warning btn-lg" (click)="plcaceOrder()">Place
+                    Order</button>
                 <!-- <button (click)="pay(20)" class="btn btn-primary btn-block">Pay $20</button> -->
             </div>
 
         </div>
-        <div class="price m-2" style="height:330px;">
+        <div class="price m-2" style="height:330px;" *ngIf="data.length!=0">
             <div>
                 <p class="fs-5 px-2 py-3 bb">Price Details</p>
                 <div class="d-flex bb py-4 px-2">
@@ -82,15 +94,16 @@
                 <div class="bb d-flex py-2 px-2">
                     <div class="w-80">
                         <p class="fs-6 fw-bold">Total Amount</p>
-    
+
                     </div>
                     <div class="w-20">
                         <p class="fs-6 fw-bolder">₹ {{totalPrice}}</p>
-    
+
                     </div>
                 </div>
                 <div class="px-2 py-2">
-                    <p class="text-success fw-bold">You will save <span class="fw-bolder">₹ {{discountPrice}}</span> on this
+                    <p class="text-success fw-bold">You will save <span class="fw-bolder">₹ {{discountPrice}}</span> on
+                        this
                         order</p>
                 </div>
             </div>
@@ -106,14 +119,15 @@
                 <p class="text-success fw-bolder p-2" style="    margin-left: 10px;
                 margin-top: -12px;" *ngIf="offerValid">Congratulations!! Coupon Applied!!</p>
                 <p class="text-danger p-2 fw-bolder" style="    margin-left: 10px;
-                margin-top: -12px;"  *ngIf="!offerValid&&isCheck">Offer is not valid!! Please add some more item</p>
-               <!-- <div class="d-flex justify-content-end">
+                margin-top: -12px;" *ngIf="!offerValid&&isCheck">Offer is not valid!! Please add some more item</p>
+                <!-- <div class="d-flex justify-content-end">
                 <button class="btn btn-primary my-2" (click)="applyOffer()">Apply</button>
                </div> -->
             </div>
-           
+
 
         </div>
     </div>
+
 </div>
 <app-footer-n></app-footer-n>

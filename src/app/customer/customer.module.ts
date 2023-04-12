@@ -21,7 +21,7 @@ import { MatListModule } from '@angular/material/list';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -40,8 +40,9 @@ import { FooterComponent } from './footer/footer.component';
 import { FooterNComponent } from './footer-n/footer-n.component';
 import { BannerTwoComponent } from './banner-two/banner-two.component';
 import { FeaturedProductComponent } from './featured-product/featured-product.component';
-import { MyOrderComponent } from './my-order/my-order.component'
-
+import { MyOrderComponent } from './my-order/my-order.component';
+import { HeaderComponent } from './header/header.component'
+import { FilterPipeModule } from 'ngx-filter-pipe'
 @NgModule({
   declarations: [
     LandingComponent,
@@ -62,15 +63,18 @@ import { MyOrderComponent } from './my-order/my-order.component'
     FooterNComponent,
     BannerTwoComponent,
     FeaturedProductComponent,
-    MyOrderComponent
+    MyOrderComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
     CarouselModule,
+    FormsModule,
     NgxPaginationModule,
     NgxSliderModule,
     MatRadioModule,
     MatListModule,
+    FilterPipeModule,
     MatIconModule,
     MatButtonModule,
     MatDialogModule,

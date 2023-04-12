@@ -1,5 +1,6 @@
+<!-- <app-header></app-header> -->
 <div class="container d-flex">
-    <div class="profile">
+    <div class="profile" *ngIf="!login">
         <app-profile></app-profile>
     </div>
     <div class="wishlist">
@@ -42,6 +43,15 @@
                 <button class="btn btn-danger" (click)="remove(item?.id)">- Remove</button>
             </div>
 
+        </div>
+        <div class="login" *ngIf="login">
+            <div>
+                <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+                    alt="" height="200px" width="200px" style="margin-left: 55px;">
+            </div>
+            <h2 class="text-center">Missing Wishlisted items?</h2>
+            <p class="text-center">Login to see the items you added previously</p>
+            <button class="btn btn-primary" style="margin-left: 130px;" (click)="openAddEditForm()">Login</button>
         </div>
     </div>
 </div>
